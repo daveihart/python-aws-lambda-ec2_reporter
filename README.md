@@ -16,7 +16,7 @@ For this script you only need read-only access to EC2
 
 Create a role which can be used by Lambda. The role applied to Lambda must at a minimum have;
 
-Assume Role across accounts;
+#### Assume Role across accounts;
 ```json
 {
     "Version": "2012-10-17",
@@ -31,10 +31,10 @@ Assume Role across accounts;
 ```
 *The Resource can be made into a list to define multiple accounts*
 
-AmazonEC2ReadOnlyAccess     AWS Managed Policy to allow you to describe the EC2 instances
+#### AmazonEC2ReadOnlyAccess     AWS Managed Policy to allow you to describe the EC2 instances
 
-For logging to cloudWatch (useful for audit and troubleshooting);
-
+#### For logging to cloudWatch (useful for audit and troubleshooting);
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -49,8 +49,9 @@ For logging to cloudWatch (useful for audit and troubleshooting);
         }
     ]
 }
-
-Ability to upload to S3 bucket
+```
+#### Ability to upload to S3 bucket
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -72,9 +73,7 @@ Ability to upload to S3 bucket
         }
     ]
 }
-
-
-
+```
 
 ### Lambda configuration
 
