@@ -6,6 +6,73 @@ This script has been developed to produce a csv format report on ec2 instances a
 
 
 ### Permissions
+All of the accounts you are assuming the role in will require the roll defined. They must all use the same role name
+
+
+
+The role must trust the account which the assume is being performed
+
+For this script you only need read-only access to EC2
+
+Create a role which can be used by Lambda. The role applied to Lambda must at a minimum have;
+
+Assume Role across accounts;
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::account_number:role/role_name"
+        }
+    ]
+}
+
+*The Resource can be made into a list to define multiple accounts*
+
+AmazonEC2ReadOnlyAccess     AWS Managed Policy to allow you to describe the EC2 instances
+
+For logging to cloudWatch (useful for audit and troubleshooting);
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+Ability to upload to S3 bucket
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "s3:PutObject",
+            "Resource": [
+                "arn:aws:s3:::bucket_name",
+                "arn:aws:s3:::bucket_name/*"
+            ]
+        }
+    ]
+}
+
+
 
 
 ### Lambda configuration
