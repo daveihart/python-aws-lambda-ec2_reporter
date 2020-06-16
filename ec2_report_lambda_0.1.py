@@ -1,7 +1,7 @@
 #######################################################################
-# report on ec2 instances retreiving a defined set of values and tags
+# report on ec2 instances retrieving a defined set of values and tags
 # author: Dave Hart
-# email: dave.hart@capgemini.com
+# email:  daveihart@hotmail.com
 # date: 29/05/2020
 #######################################################################
 
@@ -18,13 +18,11 @@ accounts_list = os.environ['aws_accounts']
 accounts = accounts_list.split(",")
 arole = os.environ['arole']
 
-#formatting_values = ["OwnerId", "InstanceId", "InstanceType", "KeyName", "ImageId", "State", "Placement", "PrivateIpAddress", "SubnetId", "VpcId", "Platform","CoreCount","ThreadsPerCore"]
 values_list = os.environ['attributes']
 formatting_values = values_list.split(",")
 
 tags_list = os.environ['tags']
 formatted_tags = tags_list.split(",")
-#formatted_tags = ["Name", "Project", "Release", "Environment", "Role", "ExpirationDate", "OS", "Description", "Owner", "Ec2StopStartSchedule", "CostCentre"]
 
 bucket_name = os.environ['bucket_name']
 dt=date.today()
