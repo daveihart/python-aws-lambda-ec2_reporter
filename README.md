@@ -107,6 +107,11 @@ output_path | folder within the bucket where the report will be held. E.g. ec2_r
 7. Give the rule a meaningful name and description
 7. Select the Create rule button
 
+###S3 considerations
+
+Unless you have any contractural or regulatory requirements to retain x amount of logs, you could introduce a 
+Lifecycle rule to the s3 bucket to remove objects older than x days.
+
 ### Known issues
 None
 
