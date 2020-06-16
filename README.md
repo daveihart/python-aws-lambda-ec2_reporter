@@ -1,4 +1,4 @@
-# EC2 Reports serverless
+# EC2 Reports - serverless
 
 This script has been developed to produce a csv format report on ec2 instances across multiple accounts utlising aws roles. The output file will be a single csv which contains all instances across the accounts provided. The csv file will be uploaded to s3. The report will only retrieve attributes and tags defined in the Lambda environment variables
 
@@ -17,6 +17,7 @@ For this script you only need read-only access to EC2
 Create a role which can be used by Lambda. The role applied to Lambda must at a minimum have;
 
 Assume Role across accounts;
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -27,7 +28,7 @@ Assume Role across accounts;
         }
     ]
 }
-
+```
 *The Resource can be made into a list to define multiple accounts*
 
 AmazonEC2ReadOnlyAccess     AWS Managed Policy to allow you to describe the EC2 instances
