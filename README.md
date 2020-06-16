@@ -8,11 +8,7 @@ This script has been developed to produce a csv format report on ec2 instances a
 ### Permissions
 All of the accounts you are assuming the role in will require the roll defined. They must all use the same role name
 
-
-
-The role must trust the account which the assume is being performed
-
-For this script you only need read-only access to EC2
+The role must trust the account which the assume is being performed and have at a minimum Read Only EC2 access
 
 Create a role which can be used by Lambda. The role applied to Lambda must at a minimum have;
 
@@ -77,7 +73,7 @@ Create a role which can be used by Lambda. The role applied to Lambda must at a 
 
 ### Lambda configuration
 
-
+The code has been deployed as Python 3.8 (latest at time of writing) within Lambda
 
 #### Environment variables
 
@@ -85,14 +81,13 @@ Key                  | Value
 ---------------------|----------------------
 arole | role name to assume
 attributes | **(comma seperated list)** e.g. OwnerId,InstanceId,InstanceType
+tags | **(comma seperated list)** e.g. Name,Project,Release,Environment,CostCentre
 aws_accounts | **(comma seperated list)** e.g. 1111111111111,2222222222222,3333333333333
+bucket_name | name of bucket e.g. reporting_test_bucket
+output_path | folder within the bucket where the report will be held. E.g. ec2_reports
 
-
-### 
-
-
-### Prerequisites
-
+### Known issues
+None
 
 ## Author
 
