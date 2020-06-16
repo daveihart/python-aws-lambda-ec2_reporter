@@ -85,6 +85,10 @@ Configure a test event and have nothing define in the json, e.g.
 
 #### Environment variables
 
+To ensure the code can easily be re-used I have endevoured to set all the key elements as variables.
+These can then be updated by anyone without having to get involved in the coding side. e.g. adding a new account or 
+tag can easily be done by updating the comma seperated list for the item within the Lambda environment variables.
+
 Key                  | Value
 ---------------------|----------------------
 arole | role name to assume
@@ -95,6 +99,8 @@ bucket_name | name of bucket e.g. reporting_test_bucket
 output_path | folder within the bucket where the report will be held. E.g. ec2_reports
 
 ### Trigger : CloudWatch Events
+
+Please use the following steps to define a schedule trigger to generate the log files
 
 1. On the AWS Console, navigate to CloudWatch. Then select the Events | Rules
 2. Select the Create Rule button
@@ -107,7 +113,7 @@ output_path | folder within the bucket where the report will be held. E.g. ec2_r
 7. Give the rule a meaningful name and description
 7. Select the Create rule button
 
-###S3 considerations
+### S3 considerations
 
 Unless you have any contractural or regulatory requirements to retain x amount of logs, you could introduce a 
 Lifecycle rule to the s3 bucket to remove objects older than x days.
