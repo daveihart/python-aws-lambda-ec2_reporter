@@ -1,6 +1,6 @@
-# EC2 Reports - serverless
+# EC2 Reports - serverless - Formatted
 
-This script has been developed to produce a csv format report on ec2 instances across multiple accounts utlising aws roles. The output file will be a single csv which contains all instances across the accounts provided. The csv file will be uploaded to s3. The report will only retrieve attributes and tags defined in the Lambda environment variables
+This script has been developed to produce a csv format report on EC2 instances across multiple accounts utilising AWS roles. The output file will be a single csv which contains all instances across the accounts provided. The csv file will be automatically uploaded to S3. The report will only retrieve attributes and tags defined in the Lambda environment variables
 
 ## Getting Started
 ### Permissions
@@ -85,16 +85,16 @@ Configure a test event and have nothing define in the json, e.g.
 
 #### Environment variables
 
-To ensure the code can easily be re-used I have endevoured to set all the key elements as variables.
+To ensure the code can easily be re-used I have set all the key elements as variables.
 These can then be updated by anyone without having to get involved in the coding side. e.g. adding a new account or 
-tag can easily be done by updating the comma seperated list for the item within the Lambda environment variables.
+tag can easily be done by updating the comma separated list for the item within the Lambda environment variables.
 
 Key                  | Value
 ---------------------|----------------------
 arole | role name to assume
-attributes | **(comma seperated list)** e.g. OwnerId,InstanceId,InstanceType
-tags | **(comma seperated list)** e.g. Name,Project,Release,Environment,CostCentre
-aws_accounts | **(comma seperated list)** e.g. 1111111111111,2222222222222,3333333333333
+attributes | **(comma separated list)** e.g. OwnerId,InstanceId,InstanceType
+tags | **(comma separated list)** e.g. Name,Project,Release,Environment,CostCentre
+aws_accounts | **(comma separated list)** e.g. 1111111111111,2222222222222,3333333333333
 bucket_name | name of bucket e.g. reporting_test_bucket
 output_path | folder within the bucket where the report will be held. E.g. ec2_reports
 
@@ -106,7 +106,7 @@ Please use the following steps to define a schedule trigger to generate the log 
 2. Select the Create Rule button
 3. Select the schedule radio button and define your schedule. We used a cron expression 
     00 03 ? * * *
-    THis executed the code at 3am everyday of the week
+    This executed the code at 3am everyday of the week
 4. Select the add target button
 5. Choose Lambda function and then select your function from the drop down list
 6. Select the Configure details button
@@ -115,7 +115,7 @@ Please use the following steps to define a schedule trigger to generate the log 
 
 ### S3 considerations
 
-Unless you have any contractural or regulatory requirements to retain x amount of logs, you could introduce a 
+Unless you have any contractual or regulatory requirements to retain x amount of logs, you could introduce a 
 Lifecycle rule to the s3 bucket to remove objects older than x days.
 
 ### Known issues
